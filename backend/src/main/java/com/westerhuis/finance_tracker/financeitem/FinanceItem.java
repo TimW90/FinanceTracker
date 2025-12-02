@@ -19,11 +19,18 @@ public class FinanceItem {
 
     private String description;
 
-    private double amount;
+    private Double amount;
 
     private String date; //Todo: turn it into LocalDateTime
 
     @Enumerated(EnumType.STRING)
     private FinanceType type;
+
+    public FinanceItem(String description, Double amount, String date, FinanceType type) {
+        this.description = description;
+        this.amount = amount;
+        this.date = date;
+        this.type = type;
+    }
 
 }
