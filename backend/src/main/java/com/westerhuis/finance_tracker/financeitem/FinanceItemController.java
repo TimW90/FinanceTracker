@@ -30,8 +30,13 @@ public class FinanceItemController {
         return ResponseEntity.created(URI.create("/finance" + addedItem.getId())).body(addedItem);
     }
 
-    @GetMapping("/balance")
-    public ResponseEntity<Double> getBalance() {
-        return ResponseEntity.ok(financeItemService.calculateBalance());
+    @GetMapping("/balance/month/{year}/{month}")
+    public ResponseEntity<Double> getMonthlyBalance(@PathVariable("year") int year, @PathVariable("month") int month) {
+        return ResponseEntity.ok(financeItemService.calculateMonthlyBalance(year, month));
+    }
+
+    @GetMapping("/balance/year/{year}")
+    public ResponseEntity<Double> getYearlyBalance(@PathVariable("year") int year) {
+        return ResponseEntity.ok(financeItemService.calculateYearlyBalance(year));
     }
 }

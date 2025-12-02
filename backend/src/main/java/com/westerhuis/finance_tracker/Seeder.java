@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.westerhuis.finance_tracker.financeitem.FinanceType.EXPENSE;
@@ -23,13 +25,14 @@ public class Seeder implements CommandLineRunner {
         if (financeItemRepository.count() == 0) {
 
             financeItemRepository.saveAll(List.of(
-                    new FinanceItem("Main income", 2200.00, "Today", INCOME),
-                    new FinanceItem("Secondary income", 400.00, "Today", INCOME),
-                    new FinanceItem("Healthcare", 250.00, "Today", EXPENSE),
-                    new FinanceItem("Rent", 850.00, "Today", EXPENSE),
-                    new FinanceItem("Utilities", 250.00, "Today", EXPENSE),
-                    new FinanceItem("Insurances", 100.00, "Today", EXPENSE),
-                    new FinanceItem("Groceries", 250.00, "Today", EXPENSE)
+                            new FinanceItem("Main income", 2200.00, LocalDate.of(2025, 12, 1), INCOME),
+                            new FinanceItem("Secondary income", 400.00, LocalDate.of(2025, 12, 1), INCOME),
+                            new FinanceItem("Healthcare", 250.00, LocalDate.of(2025, 12, 1), EXPENSE),
+                            new FinanceItem("Rent", 850.00, LocalDate.of(2025, 12, 1), EXPENSE),
+                            new FinanceItem("Utilities", 250.00, LocalDate.of(2025, 12, 1), EXPENSE),
+                            new FinanceItem("Insurances", 100.00, LocalDate.of(2025, 12, 1), EXPENSE),
+                            new FinanceItem("Groceries", 250.00, LocalDate.of(2025, 12, 1), EXPENSE),
+                            new FinanceItem("Last month expense", 100.00, LocalDate.of(2025, 11, 1), EXPENSE)
                     )
             );
         }

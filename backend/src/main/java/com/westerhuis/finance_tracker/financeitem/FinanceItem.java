@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -21,12 +22,12 @@ public class FinanceItem {
 
     private Double amount;
 
-    private String date; //Todo: turn it into LocalDateTime
+    private LocalDate date;
 
     @Enumerated(EnumType.STRING)
     private FinanceType type;
 
-    public FinanceItem(String description, Double amount, String date, FinanceType type) {
+    public FinanceItem(String description, Double amount, LocalDate date, FinanceType type) {
         this.description = description;
         this.amount = amount;
         this.date = date;
