@@ -11,15 +11,20 @@ import java.util.List;
 @RequestMapping("api/v1/finance")
 public class FinanceItemController {
 
-    private final FinanceItemRepository financeItemRepository;
+    private final FinanceItemService financeItemService;
 
     @GetMapping
     public List<FinanceItem> getAllFinance() {
-        return financeItemRepository.findAll();
+        return financeItemService.findAll();
     }
 
     @PostMapping
-    public FinanceItem addFinanceItem(@RequestBody FinanceItem newFinanceItem) {
-        return financeItemRepository.save(newFinanceItem);
+    public FinanceItem newFinanceItem(@RequestBody FinanceItem newFinanceItem) {
+        return financeItemService.addFinanceItem(newFinanceItem);
+    }
+
+    @GetMapping("/balance")
+    public Double getBalance() {
+        return financeItemService.calculateBalance();
     }
 }
